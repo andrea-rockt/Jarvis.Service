@@ -6,7 +6,7 @@ namespace Jarvis.Service.Domain.Location
 {
     public class LocationSensorDatas:Entity<Guid>
     {
-        public virtual IList<SensorData> SensorDatas { get; protected set; }
+        public virtual IList<SensorData> SensorDatas { get; set; }
 
         public virtual void DistanceFrom(LocationSensorDatas other)
         {

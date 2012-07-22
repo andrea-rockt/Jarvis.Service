@@ -5,11 +5,11 @@ namespace Jarvis.Service.Domain.Location
 {
     public class WlanSensorData : SensorData
     {
-        public virtual string SSID { get; protected set; }
+        public virtual string SSID { get;  set; }
 
-        public virtual IList<MacAddress> BSSIDs { get; protected set; }
+        public virtual IList<MacAddress> BSSIDs { get;  set; }
 
-        public virtual double SignalStrength { get; protected set; }
+        public virtual double SignalStrength { get;  set; }
 
         #region Overrides of SensorData
 

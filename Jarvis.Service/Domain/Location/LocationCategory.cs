@@ -5,6 +5,6 @@ namespace Jarvis.Service.Domain.Location
 {
     public class LocationCategory:Entity<Guid>
     {
-        public virtual string Name { get; protected set; }
+        public virtual string Name { get; set; }
     }
 }

@@ -5,7 +5,7 @@ namespace Jarvis.Service.Domain.Location
 {
     public class MacAddress : Entity<Guid>
     {
-        public virtual byte[] Bytes { get; protected set; }
+        public virtual byte[] Bytes { get; set; }
         public override string ToString()
         {
             throw new NotImplementedException();
