@@ -35,8 +35,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.3.1.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\packages\System.Data.SQLite.1.0.81.0\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\packages\System.Data.SQLite.1.0.81.0\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +60,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\DomainModel\Entity{T}.cs" />
+    <Compile Include="Domain\DomainModel\IPersistRepository{TEntity}.cs" />
+    <Compile Include="Domain\DomainModel\IReadOnlyRepository{TEntity,TKey}.cs" />
+    <Compile Include="Domain\DomainModel\IRepository{TEntity,TKey}.cs" />
+    <Compile Include="Domain\DomainModel\NhRepository{TEntity,TKey}.cs" />
+    <Compile Include="Domain\Location\Location.cs" />
+    <Compile Include="Domain\Location\LocationCategory.cs" />
+    <Compile Include="Domain\Location\LocationSensorDatas.cs" />
+    <Compile Include="Domain\Location\MacAddress.cs" />
+    <Compile Include="Domain\Location\SensorData.cs" />
+    <Compile Include="Domain\Location\WlanSensorData.cs" />
+    <Compile Include="Domain\Mappings\LocationCategoryMap.cs" />
+    <Compile Include="Domain\Mappings\LocationMap.cs" />
+    <Compile Include="Domain\Mappings\LocationSensorDatasMap.cs" />
+    <Compile Include="Domain\Mappings\MacAddressMap.cs" />
+    <Compile Include="Domain\Mappings\SensorDataMap.cs" />
+    <Compile Include="Domain\Mappings\WlanSensorDataMap.cs" />
+    <Compile Include="Domain\Repos\ILocationRepository.cs" />
+    <Compile Include="Domain\Repos\LocationNhRepository.cs" />
     <Compile Include="Service1.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -54,7 +88,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>rd "$(ProjectDir)obj" /S /Q</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
