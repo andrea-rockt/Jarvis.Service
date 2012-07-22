@@ -18,6 +18,7 @@ namespace Jarvis.Service.Test.Domain.Location
 
             Assert.IsTrue(left.IsEquivalent(right));
             Assert.IsTrue(right.IsEquivalent(left));
+            Assert.IsTrue(right.Equals(left));
         }
 
         [Test]
@@ -28,6 +29,7 @@ namespace Jarvis.Service.Test.Domain.Location
 
             Assert.IsFalse(left.IsEquivalent(right));
             Assert.IsFalse(right.IsEquivalent(left));
+            Assert.IsFalse(right.Equals(left));
         }
     }
 }

@@ -9,17 +9,24 @@ namespace Jarvis.Service.Domain.Location
         public virtual byte[] Bytes { get; set; }
 
 
+        public bool IsEquivalent(MacAddress other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Bytes.SequenceEqual(other.Bytes);
+        }
+
+        
         /// <summary>
-        /// Check if object represents the same mac address inspite of ids
+        /// Checks Businness rule equivalence
         /// </summary>
         /// <param name="other">Object to check for equivalence</param>
         /// <returns></returns>
-        public virtual bool IsEquivalent(MacAddress other)
+        public override bool IsEquivalent(Entity<Guid>obj)
         {
-            if (Bytes == null || other.Bytes == null)
-                return false;
-
-            return Bytes.SequenceEqual(other.Bytes);
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return IsEquivalent(obj as MacAddress);
         }
 
         public override string ToString()
