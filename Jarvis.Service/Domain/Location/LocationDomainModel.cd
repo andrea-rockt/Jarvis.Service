@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="JarvisWCFService.Domain.Location.Location">
+    <Position X="6.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAQAAAAAEAAAAAIABAAAABA=</HashCode>
+      <FileName>Domain\Location\Location.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LocationSensorDatas" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Categories" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="JarvisWCFService.Domain.Location.WlanSensorData">
+    <Position X="4" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAgAAAAAAE=</HashCode>
+      <FileName>Domain\Location\WlanSensorData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="BSSIDs" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="JarvisWCFService.Domain.Location.LocationCategory">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Location\LocationCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JarvisWCFService.Domain.Location.LocationSensorDatas">
+    <Position X="6.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Location\LocationSensorDatas.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="SensorDatas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="JarvisWCFService.Domain.Location.MacAddress">
+    <Position X="2" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Domain\Location\MacAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JarvisWCFService.Domain.Location.SensorData">
+    <Position X="4" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Location\SensorData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
