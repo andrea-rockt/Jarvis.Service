@@ -35,23 +35,19 @@ namespace Jarvis.Service.Domain.DomainModel
                 return true;
             }
 
+
+
+            var equatable = this as IBusinessEquatable;
+            if(equatable!=null){
             // Since the Ids aren't the same, both of them must be transient to 
             // compare domain signatures; because if one is transient and the 
             // other is a persisted entity, then they cannot be the same object.
-            return this.IsTransient() && compareTo.IsTransient() && this.BusinessEquals(compareTo);
-        }
+            return this.IsTransient() && compareTo.IsTransient() && equatable.BusinessEquals(compareTo);
+            }
 
-
-        /// <summary>
-        /// Returns wether other is equivalent in content without checking for id equaliy
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        /// <remarks>Should be overridden if</remarks>
-        public virtual bool BusinessEquals(Entity<T> other )
-        {
             return false;
         }
+
 
         public override int GetHashCode()
         {
@@ -78,6 +74,7 @@ namespace Jarvis.Service.Domain.DomainModel
 
             return this._cachedHashcode.Value;
         }
+        
 
         /// <summary>
         ///     Transient objects are not associated with an item already in storage.  For instance,

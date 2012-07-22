@@ -4,7 +4,7 @@ using Jarvis.Service.Domain.DomainModel;
 
 namespace Jarvis.Service.Domain.Location
 {
-    public class MacAddress : Entity<Guid>
+    public class MacAddress : Entity<Guid>,IBusinessEquatable
     {
         public virtual byte[] Bytes { get; set; }
 
@@ -20,9 +20,9 @@ namespace Jarvis.Service.Domain.Location
         /// <summary>
         /// Checks Businness rule equivalence
         /// </summary>
-        /// <param name="other">Object to check for equivalence</param>
+        /// <param name="obj">Object to check for equivalence</param>
         /// <returns></returns>
-        public override bool BusinessEquals(Entity<Guid>obj)
+        public  bool BusinessEquals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;

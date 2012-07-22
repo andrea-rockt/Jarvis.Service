@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\DomainModel\Entity{T}.cs" />
+    <Compile Include="Domain\DomainModel\IBusinessEquatable.cs" />
     <Compile Include="Domain\DomainModel\IPersistRepository{TEntity}.cs" />
     <Compile Include="Domain\DomainModel\IReadOnlyRepository{TEntity,TKey}.cs" />
     <Compile Include="Domain\DomainModel\IRepository{TEntity,TKey}.cs" />
