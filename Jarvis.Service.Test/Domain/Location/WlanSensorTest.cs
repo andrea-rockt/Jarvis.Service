@@ -11,9 +11,74 @@ namespace Jarvis.Service.Test.Domain.Location
     public class WlanSensorTest
     {
         [Test]
-        public void ShouldReturnCorrectDistance()
+        public void EquivalenceWithSignal()
         {
-            var sensor1 = new WlanSensorData() {};
+            var left = new WlanSensorData()
+            {
+                BSSIDs = new List<MacAddress>(){new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } }},
+                SignalStrength = 1,
+                SSID = "Rete1"
+            };
+            var right = new WlanSensorData()
+            {
+                BSSIDs = new List<MacAddress>(){new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } }},
+                SignalStrength = 1,
+                SSID = "Rete1"
+            };
+
+            Assert.IsTrue(left.BusinessEquals(right,true));
+            Assert.IsTrue(right.BusinessEquals(left,true));
+            Assert.IsTrue(right.Equals(left));
         }
+        [Test]
+        public void EquivalenceWithoutSignal()
+        {
+            var left = new WlanSensorData()
+            {
+                BSSIDs = new List<MacAddress>() { new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } } },
+                SignalStrength = 1,
+                SSID = "Rete1"
+            };
+            var right = new WlanSensorData()
+            {
+                BSSIDs = new List<MacAddress>() { new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } } },
+                SignalStrength = 0.5,
+                SSID = "Rete1"
+            };
+
+            Assert.IsTrue(left.BusinessEquals(right,false));
+            Assert.IsTrue(right.BusinessEquals(left,false));
+        }
+
+        [Test]
+        public void InequivalenceWithoutSignal()
+        {
+            var left = new WlanSensorData()
+            {
+                BSSIDs = new List<MacAddress>() { new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } } },
+                SignalStrength = 1,
+                SSID = "Rete1"
+            };
+            var right = new WlanSensorData()
+            {
+                BSSIDs = new List<MacAddress>() { new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xAA } } },
+                SignalStrength = 1,
+                SSID = "Rete1"
+            };
+
+            Assert.IsFalse(left.BusinessEquals(right, false));
+            Assert.IsFalse(right.BusinessEquals(left, false));
+        }
+        [Test]
+        public void Inequivalence()
+        {
+            var left = new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } };
+            var right = new MacAddress() { Bytes = new byte[] { 0xCC, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } };
+
+            Assert.IsFalse(left.BusinessEquals(right));
+            Assert.IsFalse(right.BusinessEquals(left));
+            Assert.IsFalse(right.Equals(left));
+        }
+
     }
 }

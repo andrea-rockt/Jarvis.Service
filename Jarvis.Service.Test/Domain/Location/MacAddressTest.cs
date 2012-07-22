@@ -16,8 +16,8 @@ namespace Jarvis.Service.Test.Domain.Location
             var left = new MacAddress() {Bytes = new byte[] {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF}};
             var right = new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } };
 
-            Assert.IsTrue(left.IsEquivalent(right));
-            Assert.IsTrue(right.IsEquivalent(left));
+            Assert.IsTrue(left.BusinessEquals(right));
+            Assert.IsTrue(right.BusinessEquals(left));
             Assert.IsTrue(right.Equals(left));
         }
 
@@ -27,8 +27,8 @@ namespace Jarvis.Service.Test.Domain.Location
             var left = new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } };
             var right = new MacAddress() { Bytes = new byte[] { 0xCC, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } };
 
-            Assert.IsFalse(left.IsEquivalent(right));
-            Assert.IsFalse(right.IsEquivalent(left));
+            Assert.IsFalse(left.BusinessEquals(right));
+            Assert.IsFalse(right.BusinessEquals(left));
             Assert.IsFalse(right.Equals(left));
         }
     }

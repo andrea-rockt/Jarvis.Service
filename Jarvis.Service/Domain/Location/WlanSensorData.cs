@@ -22,7 +22,7 @@ namespace Jarvis.Service.Domain.Location
 
         #endregion
 
-        public bool IsEquivalent(WlanSensorData other, bool compareSignalStrength)
+        public bool BusinessEquals(WlanSensorData other, bool compareSignalStrength)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -38,11 +38,11 @@ namespace Jarvis.Service.Domain.Location
         /// </summary>
         /// <param name="other">Object to check for equivalence</param>
         /// <returns></returns>
-        public override bool IsEquivalent(Entity<Guid> obj)
+        public override bool BusinessEquals(Entity<Guid> obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return IsEquivalent(obj as WlanSensorData, true);
+            return BusinessEquals(obj as WlanSensorData, true);
         }
     }
 }

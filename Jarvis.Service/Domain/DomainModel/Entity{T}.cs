@@ -38,7 +38,7 @@ namespace Jarvis.Service.Domain.DomainModel
             // Since the Ids aren't the same, both of them must be transient to 
             // compare domain signatures; because if one is transient and the 
             // other is a persisted entity, then they cannot be the same object.
-            return this.IsTransient() && compareTo.IsTransient() && this.IsEquivalent(compareTo);
+            return this.IsTransient() && compareTo.IsTransient() && this.BusinessEquals(compareTo);
         }
 
 
@@ -48,7 +48,7 @@ namespace Jarvis.Service.Domain.DomainModel
         /// <param name="other"></param>
         /// <returns></returns>
         /// <remarks>Should be overridden if</remarks>
-        public virtual bool IsEquivalent(Entity<T> other )
+        public virtual bool BusinessEquals(Entity<T> other )
         {
             return false;
         }
