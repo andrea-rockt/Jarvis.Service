@@ -21,7 +21,7 @@ namespace Jarvis.Service.Domain.Location
             }
 
             //distance = Math.Sqrt(distance);
-            return 1 - Math.Sqrt(distance/Math.Max(SensorDatas.Count,other.SensorDatas.Count));
+            return 1 - Math.Sqrt(distance/Math.Min(SensorDatas.Count,other.SensorDatas.Count));
         }
 
 
