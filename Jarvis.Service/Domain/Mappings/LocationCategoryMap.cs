@@ -8,7 +8,7 @@ namespace Jarvis.Service.Domain.Mappings
         public LocationCategoryMap()
         {
             Id(x => x.Id).GeneratedBy.GuidComb();
-            Map(x => x.Name).Not.Nullable();
+            Map(x => x.Name).Not.Nullable().Unique();
         }
     }
 }

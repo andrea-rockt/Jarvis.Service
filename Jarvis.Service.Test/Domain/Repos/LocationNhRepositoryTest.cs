@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xaml;
@@ -22,9 +23,11 @@ namespace Jarvis.Service.Test.Domain.Repos
         private ISessionFactory _sessionFactory;
         private ISession _session;
 
+        
         [TestFixtureSetUp]
         public void FixtureSetup()
         {
+            File.Delete("jarvis_test.sqlite3");
             _sessionFactory = Fluently
                 .Configure()
                 .Database(

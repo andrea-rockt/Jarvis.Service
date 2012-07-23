@@ -7,7 +7,7 @@ namespace Jarvis.Service.Domain.Mappings
         public LocationMap()
         {
             Id(x => x.Id).GeneratedBy.GuidComb();
-            Map(x => x.Name).Not.Nullable();
+            Map(x => x.Name).Not.Nullable().Unique();
             Map(x => x.State);
             Map(x => x.StreetAddress);
             Map(x => x.City);

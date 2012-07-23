@@ -78,7 +78,7 @@
     <Location City="Catania" Name="Lavoro" State="Italy" StreetAddress="Via pera 3" >
         <Location.Categories>
             <scg:List x:TypeArguments="LocationCategory" Capacity="4">
-                <LocationCategory Name="Categoria1" />
+                <LocationCategory Name="Categoria2" />
             </scg:List>
         </Location.Categories>
         <Location.LocationSensorDatas>
