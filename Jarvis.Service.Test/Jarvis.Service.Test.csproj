@@ -51,7 +51,6 @@
     <Compile Include="Domain\Location\MacAddressTest.cs" />
     <Compile Include="Domain\Location\WlanSensorTest.cs" />
     <Compile Include="Domain\Repos\LocationNhRepositoryTest.cs" />
-    <Compile Include="Helpers\XmlExpandoObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +66,7 @@
     <None Include="Domain\Repos\Data.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

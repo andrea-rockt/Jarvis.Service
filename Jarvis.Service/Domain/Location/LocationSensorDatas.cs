@@ -5,13 +5,23 @@ using Jarvis.Service.Domain.DomainModel;
 using System.Linq;
 namespace Jarvis.Service.Domain.Location
 {
-    public class LocationSensorDatas : Entity<Guid>,IBusinessEquatable
+    public class LocationSensorDatas : Entity<Guid>, IBusinessEquatable
     {
         public virtual IList<SensorData> SensorDatas { get; set; }
 
-        public virtual void DistanceFrom(LocationSensorDatas other)
+        public virtual double DistanceFrom(LocationSensorDatas other)
         {
-            throw new System.NotImplementedException();
+            double distance = 0;
+            foreach (var s1 in SensorDatas)
+            {
+                foreach (var s2 in other.SensorDatas)
+                {
+                    distance += 1-s1.SquaredDistanceFrom(s2);
+                }
+            }
+
+            //distance = Math.Sqrt(distance);
+            return 1 - Math.Sqrt(distance/Math.Max(SensorDatas.Count,other.SensorDatas.Count));
         }
 
 
@@ -25,7 +35,7 @@ namespace Jarvis.Service.Domain.Location
                                                   where other.SensorDatas.Any((x) => x.BusinessEquals(s))
                                                   select s;
 
-            return sensorDatas.Count()==other.SensorDatas.Count;
+            return sensorDatas.Count() == other.SensorDatas.Count;
         }
 
 
@@ -34,7 +44,7 @@ namespace Jarvis.Service.Domain.Location
         /// </summary>
         /// <param name="obj">Object to check for equivalence</param>
         /// <returns></returns>
-        public  bool BusinessEquals(object obj)
+        public bool BusinessEquals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;

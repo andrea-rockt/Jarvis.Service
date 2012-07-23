@@ -90,5 +90,48 @@ namespace Jarvis.Service.Test.Domain.Location
             Assert.IsFalse(right.Equals(left));
         }
 
+        [Test]
+        public void ShouldReturnMaximumDistanceForADifferentSensor()
+        {
+            var left = new WlanSensorData()
+            {
+                BSSIDs = new List<MacAddress>() { new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } } },
+                SignalStrength = 1,
+                SSID = "Rete1"
+            };
+
+            var right = new WlanSensorData()
+            {
+                BSSIDs = new List<MacAddress>() { new MacAddress() { Bytes = new byte[] { 0xBB, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } } },
+                SignalStrength = 1,
+                SSID = "Rete1"
+            };
+
+            Assert.AreEqual(left.SquaredDistanceFrom(right), 1d);
+            Assert.AreEqual(right.SquaredDistanceFrom(left), 1d);
+        }
+
+        [Test]
+        public void ShouldReturnCorrectDistanceForSameSensor()
+        {
+            var left = new WlanSensorData()
+            {
+                BSSIDs = new List<MacAddress>() { new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } } },
+                SignalStrength = 1,
+                SSID = "Rete1"
+            };
+
+            var right = new WlanSensorData()
+            {
+                BSSIDs = new List<MacAddress>() { new MacAddress() { Bytes = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF } } },
+                SignalStrength = 0.5,
+                SSID = "Rete1"
+            };
+
+            var result = Math.Pow(1d - 0.5d, 2);
+
+            Assert.AreEqual(left.SquaredDistanceFrom(right), result);
+            Assert.AreEqual(right.SquaredDistanceFrom(left), result);
+        }
     }
 }

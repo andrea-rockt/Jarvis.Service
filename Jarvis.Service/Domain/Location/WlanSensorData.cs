@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Jarvis.Service.Domain.DomainModel;
 
@@ -17,7 +18,13 @@ namespace Jarvis.Service.Domain.Location
 
         public override double SquaredDistanceFrom(SensorData other)
         {
-            throw new NotImplementedException();
+            var otherSensor = other as WlanSensorData;
+
+            if (!BusinessEquals(otherSensor, false))
+                return 1d;
+
+            Debug.Assert(otherSensor != null, "otherSensor != null");
+            return Math.Pow(SignalStrength - otherSensor.SignalStrength, 2);
         }
 
         #endregion
