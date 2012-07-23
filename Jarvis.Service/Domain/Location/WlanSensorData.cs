@@ -29,7 +29,7 @@ namespace Jarvis.Service.Domain.Location
 
         #endregion
 
-        public bool BusinessEquals(WlanSensorData other, bool compareSignalStrength)
+        public virtual bool BusinessEquals(WlanSensorData other, bool compareSignalStrength)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;

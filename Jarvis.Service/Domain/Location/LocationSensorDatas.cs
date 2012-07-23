@@ -25,7 +25,7 @@ namespace Jarvis.Service.Domain.Location
         }
 
 
-        public bool BusinessEquals(LocationSensorDatas other)
+        public virtual bool BusinessEquals(LocationSensorDatas other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -44,7 +44,7 @@ namespace Jarvis.Service.Domain.Location
         /// </summary>
         /// <param name="obj">Object to check for equivalence</param>
         /// <returns></returns>
-        public bool BusinessEquals(object obj)
+        public virtual bool BusinessEquals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
