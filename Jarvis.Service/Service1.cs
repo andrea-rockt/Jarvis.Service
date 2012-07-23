@@ -23,5 +23,12 @@ namespace Jarvis.Service
         protected override void OnStop()
         {
         }
+
+#if DEBUG
+        public void DebugOnStart(string[] args)
+        {
+            OnStart(args);
+        }
+#endif
     }
 }

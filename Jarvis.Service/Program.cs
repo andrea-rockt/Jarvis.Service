@@ -13,12 +13,17 @@ namespace Jarvis.Service
         /// </summary>
         static void Main()
         {
+#if ! DEBUG
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
 			{ 
 				new Service1() 
 			};
             ServiceBase.Run(ServicesToRun);
+#else
+            (new Service1()).DebugOnStart(new string[]{});
+#endif
+
         }
     }
 }
