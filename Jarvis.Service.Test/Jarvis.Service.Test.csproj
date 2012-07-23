@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,11 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Domain\Location\LocationCategoryTest.cs" />
     <Compile Include="Domain\Location\LocationSensorDatasTest.cs" />
     <Compile Include="Domain\Location\MacAddressTest.cs" />
     <Compile Include="Domain\Location\WlanSensorTest.cs" />
+    <Compile Include="Domain\Repos\LocationNhRepositoryTest.cs" />
+    <Compile Include="Helpers\XmlExpandoObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +62,12 @@
       <Project>{E15C5F0F-5150-47E3-9A15-D35DA9AFE8E9}</Project>
       <Name>Jarvis.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Domain\Repos\Data.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
