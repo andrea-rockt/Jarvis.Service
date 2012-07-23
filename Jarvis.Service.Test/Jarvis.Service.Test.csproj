@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Domain\Location\LocationCategoryTest.cs" />
+    <Compile Include="Domain\Location\LocationSensorDatasTest.cs" />
     <Compile Include="Domain\Location\MacAddressTest.cs" />
     <Compile Include="Domain\Location\WlanSensorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -5,7 +5,7 @@ using Jarvis.Service.Domain.DomainModel;
 
 namespace Jarvis.Service.Domain.Location
 {
-    public class WlanSensorData : SensorData,IBusinessEquatable
+    public class WlanSensorData : SensorData
     {
         public virtual string SSID { get; set; }
 
@@ -38,7 +38,7 @@ namespace Jarvis.Service.Domain.Location
         /// </summary>
         /// <param name="obj">Object to check for equivalence</param>
         /// <returns></returns>
-        public  bool BusinessEquals(object obj)
+        public override  bool BusinessEquals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
