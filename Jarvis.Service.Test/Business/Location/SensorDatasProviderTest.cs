@@ -1,56 +1,66 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
-using System.Text;
-using Jarvis.Service.Extensions;
+using Jarvis.Service.Business.Location;
+using Jarvis.Service.Domain.Location;
 using ManagedWifi;
 using Moq;
 using NHibernate.Linq;
 using NUnit.Framework;
-using Ninject;
-using Ninject.MockingKernel;
-using Ninject.MockingKernel.Moq;
 
 namespace Jarvis.Service.Test.Business.Location
 {
     [TestFixture]
     public class SensorDatasProviderTest
     {
-        private MoqMockingKernel _kernel;
+        private SensorDatasProvider _sut;
 
-        [TestFixtureSetUp]
-        public void SetupFixture()
+        [SetUp]
+        public void Setup()
         {
-            _kernel = new MoqMockingKernel();
-            _kernel.Bind<IManagedWifiContext>().ToMock();
+            var m = new Mock<IManagedWifiContext>();
+            m.Setup(x => x.Interfaces).Returns(MockedInterfaces(1));
+            m.Setup(x => x.GetAvailableNetworks(It.IsAny<IInterface>())).Returns(MockedNetworks(10));
+            _sut = new SensorDatasProvider(m.Object);
         }
 
         [Test]
         public void ShouldReturnCorrectLocationSensorDatas()
         {
-
-            var networks = from i in Enumerable.Range(0, 10)
-            select NewMockedNetwork();
-            
-            networks.ForEach((x)=>Console.WriteLine(x.SSID));
-             
+            Assert.True(MockedNetworks(10).All((x) => _sut.GetCurrentSensorDatas().SensorDatas.Any(y => y.As<WlanSensorData>().SSID.Equals(x.SSID))));
         }
 
-        private byte _mockCounter = 1;
-        private INetwork NewMockedNetwork()
+        
+        private IEnumerable<IInterface> MockedInterfaces(int howMuch)
         {
-            var mockNetwork = new Mock<INetwork>();
+            int mockCounter = 1;
+            while (mockCounter <= howMuch)
+            {
+                var i = new Mock<IInterface>();
+                i.Setup(x => x.Description).Returns("Interface " + mockCounter);
+                mockCounter++;
 
-            mockNetwork.Setup(m => m.SSID).Returns("Rete " + _mockCounter);
-            mockNetwork.Setup(m => m.BSSIDs).Returns(
-                () => new[] {new PhysicalAddress(new byte[] {0xFA, 0xCE, 0xDE, 0xAD, 0xAC, _mockCounter})});
-            mockNetwork.Setup(m => m.Type).Returns(BSSType.Infrastructure);
-            mockNetwork.Setup(m => m.SignalStrength).Returns(100);
+                yield return i.Object;
+            }
+        } 
+        private IEnumerable<INetwork> MockedNetworks(int howMuch)
+        {
+            int mockCounter = 1;
+            while (mockCounter<=howMuch)
+            {
 
-            _mockCounter++;
-            return mockNetwork.Object;
+                var mockNetwork = new Mock<INetwork>();
+                mockNetwork.Setup(m => m.SSID).Returns("Rete " + mockCounter);
+                byte[] bytes = BitConverter.GetBytes(mockCounter);
+                mockNetwork.Setup(m => m.BSSIDs).Returns(
+                    () => new[] { new PhysicalAddress(new byte[] { 0xFA, 0xCE, bytes[3], bytes[2], bytes[1], bytes[0] }) });
+                mockNetwork.Setup(m => m.Type).Returns(BSSType.Infrastructure);
+                mockNetwork.Setup(m => m.SignalStrength).Returns(100);
+
+                mockCounter++;
+                yield return mockNetwork.Object;
+            }
         }
     }
 }

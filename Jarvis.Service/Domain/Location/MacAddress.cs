@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Net.NetworkInformation;
 using Jarvis.Service.Domain.DomainModel;
 
 namespace Jarvis.Service.Domain.Location
@@ -33,6 +34,11 @@ namespace Jarvis.Service.Domain.Location
         {
             throw new NotImplementedException();
             return base.ToString();
+        }
+
+        public static MacAddress FromPhysicalAddress(PhysicalAddress pa)
+        {
+            return new MacAddress() {Bytes = pa.GetAddressBytes()};
         }
     }
 }
