@@ -67,8 +67,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Location\ILocationProvider.cs" />
     <Compile Include="Business\Location\ISensorDatasProvider.cs" />
-    <Compile Include="Business\Location\SensorDatasProvider.cs" />
+    <Compile Include="Business\Location\LocationProvider.cs" />
+    <Compile Include="Business\Location\WlanSensorDatasProvider.cs" />
     <Compile Include="Domain\DomainModel\Entity{T}.cs" />
     <Compile Include="Domain\DomainModel\IBusinessEquatable.cs" />
     <Compile Include="Domain\DomainModel\IPersistRepository{TEntity}.cs" />
