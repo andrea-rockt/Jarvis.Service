@@ -32,8 +32,7 @@ namespace Jarvis.Service.Domain.Location
 
         public override string ToString()
         {
-            throw new NotImplementedException();
-            return base.ToString();
+            return String.Format("{0,2:X}:{1,2:X}:{2,2:X}:{3,2:X}:{4,2:X}:{5,2:X}", Bytes[0], Bytes[1], Bytes[2], Bytes[3], Bytes[4], Bytes[5]);
         }
 
         public static MacAddress FromPhysicalAddress(PhysicalAddress pa)

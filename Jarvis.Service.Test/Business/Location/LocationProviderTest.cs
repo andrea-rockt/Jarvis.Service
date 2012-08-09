@@ -5,6 +5,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using Jarvis.Service.Business.Location;
 using Jarvis.Service.Domain.Location;
+using Jarvis.Service.Domain.Repos;
 using ManagedWifi;
 using Moq;
 using NHibernate.Linq;
@@ -17,29 +18,47 @@ namespace Jarvis.Service.Test.Business.Location
     {
         private LocationProvider _sut;
         const int DistinctLocations = 3;
+        private List<Service.Domain.Location.Location> _fakeRepoList = new List<Service.Domain.Location.Location>();
 
         [SetUp]
         public void SetUp()
         {
-
+            _fakeRepoList.Clear();
             int callNumber = 0;
-            var m = new Mock<IManagedWifiContext>();
-            m.Setup(x => x.Interfaces).Returns(MockedInterfaces(1));
-            m.Setup(x => x.GetAvailableNetworks(It.IsAny<IInterface>())).Returns(() => MockedNetworks(10, callNumber)).Callback(() => callNumber = (callNumber + 1) % DistinctLocations);
-            _sut = new LocationProvider(new WlanSensorDatasProvider(m.Object));    
+            var mockContext = new Mock<IManagedWifiContext>();
+            mockContext.Setup(x => x.Interfaces).Returns(MockedInterfaces(1));
+            mockContext.Setup(x => x.GetAvailableNetworks(It.IsAny<IInterface>())).Returns(() => MockedNetworks(10, callNumber)).Callback(() => callNumber = (callNumber + 1) % DistinctLocations);
+
+            var mockRepo = new Mock<ILocationRepository>();
+            mockRepo.Setup(x => x.Add(It.IsAny<IEnumerable<Service.Domain.Location.Location>>())).Returns(true).Callback
+                <IEnumerable<Service.Domain.Location.Location>>(range => _fakeRepoList.AddRange(range));
+            mockRepo.Setup(x => x.Add(It.IsAny<Service.Domain.Location.Location>())).Returns(true).Callback
+                <Service.Domain.Location.Location>(location => _fakeRepoList.Add(location));
+            mockRepo.Setup(x => x.All()).Returns(_fakeRepoList.AsQueryable);
+
+            _sut = new LocationProvider(new WlanSensorDatasProvider(mockContext.Object),mockRepo.Object);    
         }
 
         [Test]
         public void DependencyShouldBeProvided()
         {
-            Assert.Throws<ArgumentNullException>(() => new LocationProvider(null));
+            Assert.Throws<ArgumentNullException>(() => new LocationProvider(new WlanSensorDatasProvider((new Mock<IManagedWifiContext>()).Object),null));
+            Assert.Throws<ArgumentNullException>(() => new LocationProvider(null, (new Mock<ILocationRepository>()).Object));
+            Assert.Throws<ArgumentNullException>(() => new LocationProvider(null, null));
         }
 
         [Test]
         public void ShouldReturnCorrectCurrentLocation()
         {
             for (int i = 0; i < DistinctLocations; i++ ){
-                Assert.True(MockedNetworks(10,i).All((x) => _sut.CurrentLocation.LocationSensorDatas.SensorDatas.Any(y => y.As<WlanSensorData>().SSID.Equals(x.SSID))));
+                var mockedNetworks = MockedNetworks(10, i).ToList();
+                var currentLocation = _sut.CurrentLocation;
+
+                for(int j=0; j<mockedNetworks.Count;j++)
+                {
+                    Assert.IsTrue(currentLocation.LocationSensorDatas.SensorDatas[j].As<WlanSensorData>().SSID.Equals(mockedNetworks[j].SSID));
+                }
+                
             }
         }
 
@@ -56,6 +75,8 @@ namespace Jarvis.Service.Test.Business.Location
             }
 
             Assert.True(locations[0].LocationSensorDatas.BusinessEquals(_sut.ComputedLocation.LocationSensorDatas));
+            _fakeRepoList.Clear();
+            Assert.IsNull(_sut.ComputedLocation);
         }
 
         private IEnumerable<IInterface> MockedInterfaces(int howMuch)
