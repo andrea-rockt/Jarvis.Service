@@ -46,6 +46,7 @@ namespace Jarvis.Service.Business.Location
                                 select location;
 
                 return locations.FirstOrDefault();
+
             }
         }
 
