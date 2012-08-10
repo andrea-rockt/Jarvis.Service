@@ -12,6 +12,7 @@ namespace Jarvis.Service.Domain.Mappings
             Map(x => x.StreetAddress);
             Map(x => x.City);
             HasMany(x => x.Categories).Cascade.All();
+            HasMany(x => x.Actions).Cascade.All();
             HasOne(x => x.LocationSensorDatas).Cascade.All();
         }
     }

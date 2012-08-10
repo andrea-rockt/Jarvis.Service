@@ -7,6 +7,7 @@ using System.Text;
 using System.Xaml;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using Jarvis.Service.Domain.Action;
 using Jarvis.Service.Domain.Location;
 using Jarvis.Service.Domain.Mappings;
 using Jarvis.Service.Domain.Repos;
@@ -14,6 +15,7 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
+using Action = Jarvis.Service.Domain.Action.Action;
 
 namespace Jarvis.Service.Test.Domain.Repos
 {

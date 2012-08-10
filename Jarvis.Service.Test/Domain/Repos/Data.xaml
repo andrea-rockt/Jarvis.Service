@@ -1,4 +1,4 @@
-﻿<scg:List x:TypeArguments="Location" Capacity="4" xmlns="clr-namespace:Jarvis.Service.Domain.Location;assembly=Jarvis.Service" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<scg:List x:TypeArguments="Location" Capacity="4" xmlns:act="clr-namespace:Jarvis.Service.Domain.Action;assembly=Jarvis.Service" xmlns="clr-namespace:Jarvis.Service.Domain.Location;assembly=Jarvis.Service" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Location City="Catania" Name="Casa" State="Italy" StreetAddress="Via banana 3" >
         <Location.Categories>
             <scg:List x:TypeArguments="LocationCategory" Capacity="4">
@@ -73,6 +73,12 @@
                 </LocationSensorDatas.SensorDatas>
             </LocationSensorDatas>
         </Location.LocationSensorDatas>
+        <Location.Actions>
+            <scg:List x:TypeArguments="act:Action" Capacity="4">
+                <act:ExecuteProgramAction CommandString="notepad.exe"/>
+            </scg:List>
+            
+        </Location.Actions>
     </Location>
 
     <Location City="Catania" Name="Lavoro" State="Italy" StreetAddress="Via pera 3" >
@@ -149,5 +155,11 @@
                 </LocationSensorDatas.SensorDatas>
             </LocationSensorDatas>
         </Location.LocationSensorDatas>
+        <Location.Actions>
+
+            <scg:List x:TypeArguments="act:Action" Capacity="4">
+                <act:ExecuteProgramAction CommandString="cmd.exe"/>
+            </scg:List>
+        </Location.Actions>
     </Location>
 </scg:List>
