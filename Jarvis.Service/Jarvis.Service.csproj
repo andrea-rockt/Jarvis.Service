@@ -92,13 +92,19 @@
     <Compile Include="Domain\Mappings\LocationCategoryMap.cs" />
     <Compile Include="Domain\Mappings\LocationMap.cs" />
     <Compile Include="Domain\Mappings\LocationSensorDatasMap.cs" />
+    <Compile Include="Domain\Mappings\LocationStatsEntryMap.cs" />
+    <Compile Include="Domain\Mappings\LocationStatsMap.cs" />
     <Compile Include="Domain\Mappings\MacAddressMap.cs" />
     <Compile Include="Domain\Mappings\SensorDataMap.cs" />
     <Compile Include="Domain\Mappings\ShowMessageAction.cs" />
     <Compile Include="Domain\Mappings\TerminateProgramAction.cs" />
     <Compile Include="Domain\Mappings\WlanSensorDataMap.cs" />
     <Compile Include="Domain\Repos\ILocationRepository.cs" />
+    <Compile Include="Domain\Repos\ILocationStatsRepository.cs" />
     <Compile Include="Domain\Repos\LocationNhRepository.cs" />
+    <Compile Include="Domain\Repos\LocationStatsNhRepository.cs" />
+    <Compile Include="Domain\Statistics\LocationStats.cs" />
+    <Compile Include="Domain\Statistics\LocationStatsEntry.cs" />
     <Compile Include="Extensions\TimesExtension.cs" />
     <Compile Include="IoC\NHibernateModule.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -125,7 +131,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Business\Statistics\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rd "$(ProjectDir)obj" /S /Q</PostBuildEvent>

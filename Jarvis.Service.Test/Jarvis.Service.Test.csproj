@@ -77,6 +77,9 @@
     <Compile Include="Domain\Location\MacAddressTest.cs" />
     <Compile Include="Domain\Location\WlanSensorTest.cs" />
     <Compile Include="Domain\Repos\LocationNhRepositoryTest.cs" />
+    <Compile Include="Domain\Repos\LocationStatsNhRepositoryTest.cs" />
+    <Compile Include="Domain\Repos\NhRepositoryTestBase.cs" />
+    <Compile Include="Domain\Statistics\LocationStatsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,12 +93,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Domain\Repos\Data.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Domain\Repos\LocationStatsData.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rd "$(ProjectDir)obj" /S /Q</PostBuildEvent>

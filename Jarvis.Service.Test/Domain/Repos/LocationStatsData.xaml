@@ -1,0 +1,97 @@
+﻿<scg:List x:TypeArguments="s:LocationStats" Capacity="4" xmlns:act="clr-namespace:Jarvis.Service.Domain.Action;assembly=Jarvis.Service" xmlns="clr-namespace:Jarvis.Service.Domain.Location;assembly=Jarvis.Service" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:s="clr-namespace:Jarvis.Service.Domain.Statistics;assembly=Jarvis.Service">
+
+    <s:LocationStats>
+        <s:LocationStats.Location>
+            <Location City="Catania" Name="Casa" State="Italy" StreetAddress="Via banana 3" >
+                <Location.Categories>
+                    <scg:List x:TypeArguments="LocationCategory" Capacity="4">
+                        <LocationCategory Name="Categoria1" />
+                    </scg:List>
+                </Location.Categories>
+                <Location.LocationSensorDatas>
+                    <LocationSensorDatas>
+                        <LocationSensorDatas.SensorDatas>
+                            <scg:List x:TypeArguments="SensorData" Capacity="4">
+                                <WlanSensorData SSID="Rete1" SignalStrength="1">
+                                    <WlanSensorData.BSSIDs>
+                                        <scg:List x:TypeArguments="MacAddress" Capacity="4">
+                                            <MacAddress>
+                                                <MacAddress.Bytes>
+                                                    <x:Array Type="x:Byte">
+                                                        <x:Byte>170</x:Byte>
+                                                        <x:Byte>187</x:Byte>
+                                                        <x:Byte>204</x:Byte>
+                                                        <x:Byte>221</x:Byte>
+                                                        <x:Byte>238</x:Byte>
+                                                        <x:Byte>255</x:Byte>
+                                                    </x:Array>
+                                                </MacAddress.Bytes>
+                                            </MacAddress>
+                                            <MacAddress>
+                                                <MacAddress.Bytes>
+                                                    <x:Array Type="x:Byte">
+                                                        <x:Byte>160</x:Byte>
+                                                        <x:Byte>187</x:Byte>
+                                                        <x:Byte>204</x:Byte>
+                                                        <x:Byte>221</x:Byte>
+                                                        <x:Byte>238</x:Byte>
+                                                        <x:Byte>255</x:Byte>
+                                                    </x:Array>
+                                                </MacAddress.Bytes>
+                                            </MacAddress>
+                                        </scg:List>
+                                    </WlanSensorData.BSSIDs>
+                                </WlanSensorData>
+                                <WlanSensorData SSID="Rete1" SignalStrength="0.5">
+                                    <WlanSensorData.BSSIDs>
+                                        <scg:List x:TypeArguments="MacAddress" Capacity="4">
+                                            <MacAddress>
+                                                <MacAddress.Bytes>
+                                                    <x:Array Type="x:Byte">
+                                                        <x:Byte>140</x:Byte>
+                                                        <x:Byte>187</x:Byte>
+                                                        <x:Byte>204</x:Byte>
+                                                        <x:Byte>221</x:Byte>
+                                                        <x:Byte>238</x:Byte>
+                                                        <x:Byte>255</x:Byte>
+                                                    </x:Array>
+                                                </MacAddress.Bytes>
+                                            </MacAddress>
+                                            <MacAddress>
+                                                <MacAddress.Bytes>
+                                                    <x:Array Type="x:Byte">
+                                                        <x:Byte>130</x:Byte>
+                                                        <x:Byte>187</x:Byte>
+                                                        <x:Byte>204</x:Byte>
+                                                        <x:Byte>221</x:Byte>
+                                                        <x:Byte>238</x:Byte>
+                                                        <x:Byte>255</x:Byte>
+                                                    </x:Array>
+                                                </MacAddress.Bytes>
+                                            </MacAddress>
+                                        </scg:List>
+                                    </WlanSensorData.BSSIDs>
+                                </WlanSensorData>
+                            </scg:List>
+                        </LocationSensorDatas.SensorDatas>
+                    </LocationSensorDatas>
+                </Location.LocationSensorDatas>
+                <Location.Actions>
+                    <scg:List x:TypeArguments="act:Action" Capacity="4">
+                        <act:ExecuteProgramAction CommandString="notepad.exe"/>
+                        <act:ShowMessageAction Message="Ciao"/>
+                        <act:TerminateProgramAction ProcessName="notepad"/>
+                    </scg:List>
+
+                </Location.Actions>
+            </Location>
+        </s:LocationStats.Location>
+        <s:LocationStats.Entries>
+            <scg:List x:TypeArguments="s:LocationStatsEntry" Capacity="4">
+                <s:LocationStatsEntry Date="7/30/2009 14:52:10" Kind="Enter"/>
+                <s:LocationStatsEntry Date="4/10/2009 15:10:20" Kind="Exit"/>
+            </scg:List>
+        </s:LocationStats.Entries>
+    </s:LocationStats>
+</scg:List>
