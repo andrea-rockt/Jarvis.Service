@@ -63,7 +63,7 @@ namespace Jarvis.Service.Test.Domain.Repos
             var locations = XamlServices.Load(@"Domain\Repos\Data.xaml") as List<Jarvis.Service.Domain.Location.Location>;
             ILocationRepository repository = new LocationNhRepository(_session);
 
-            repository.Add(locations);
+            Assert.DoesNotThrow(()=>repository.Add(locations));
         }
     }
 }
