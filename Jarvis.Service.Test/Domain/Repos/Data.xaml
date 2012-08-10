@@ -76,6 +76,8 @@
         <Location.Actions>
             <scg:List x:TypeArguments="act:Action" Capacity="4">
                 <act:ExecuteProgramAction CommandString="notepad.exe"/>
+                <act:ShowMessageAction Message="Ciao"/>
+                <act:TerminateProgramAction ProcessName="notepad"/>
             </scg:List>
             
         </Location.Actions>
@@ -159,6 +161,8 @@
 
             <scg:List x:TypeArguments="act:Action" Capacity="4">
                 <act:ExecuteProgramAction CommandString="cmd.exe"/>
+                <act:ShowMessageAction Message="Addio"/>
+                <act:TerminateProgramAction ProcessName="cmd"/>
             </scg:List>
         </Location.Actions>
     </Location>

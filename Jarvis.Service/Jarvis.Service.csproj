@@ -73,6 +73,8 @@
     <Compile Include="Business\Location\WlanSensorDatasProvider.cs" />
     <Compile Include="Domain\Action\Action.cs" />
     <Compile Include="Domain\Action\ExecuteProgramAction.cs" />
+    <Compile Include="Domain\Action\ShowMessageAction.cs" />
+    <Compile Include="Domain\Action\TerminateProgramAction.cs" />
     <Compile Include="Domain\DomainModel\Entity{T}.cs" />
     <Compile Include="Domain\DomainModel\IBusinessEquatable.cs" />
     <Compile Include="Domain\DomainModel\IPersistRepository{TEntity}.cs" />
@@ -92,6 +94,8 @@
     <Compile Include="Domain\Mappings\LocationSensorDatasMap.cs" />
     <Compile Include="Domain\Mappings\MacAddressMap.cs" />
     <Compile Include="Domain\Mappings\SensorDataMap.cs" />
+    <Compile Include="Domain\Mappings\ShowMessageAction.cs" />
+    <Compile Include="Domain\Mappings\TerminateProgramAction.cs" />
     <Compile Include="Domain\Mappings\WlanSensorDataMap.cs" />
     <Compile Include="Domain\Repos\ILocationRepository.cs" />
     <Compile Include="Domain\Repos\LocationNhRepository.cs" />
