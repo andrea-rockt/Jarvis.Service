@@ -20,7 +20,7 @@ namespace Jarvis.Service.IoC
         public override void Load()
         {
             Bind<ISessionFactory>().ToMethod(CreateSessionFactory).InSingletonScope();
-            Bind<ISession>().ToMethod((x) => x.Kernel.Get<ISessionFactory>().OpenSession()).InThreadScope();
+            Bind<ISession>().ToMethod((x) => x.Kernel.Get<ISessionFactory>().OpenSession());
         }
 
         #endregion

@@ -21,7 +21,7 @@ namespace Jarvis.Service
 			};
             ServiceBase.Run(ServicesToRun);
 #else
-            (new Service1()).DebugOnStart(new string[]{});
+            (new JarvisService()).DebugOnStart(new string[]{});
 #endif
 
         }
