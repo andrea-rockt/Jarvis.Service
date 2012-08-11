@@ -71,6 +71,8 @@
     <Compile Include="Business\Location\ISensorDatasProvider.cs" />
     <Compile Include="Business\Location\LocationProvider.cs" />
     <Compile Include="Business\Location\WlanSensorDatasProvider.cs" />
+    <Compile Include="Business\Statistics\IStatsCollector.cs" />
+    <Compile Include="Business\Statistics\StatsCollector.cs" />
     <Compile Include="Domain\Action\Action.cs" />
     <Compile Include="Domain\Action\ExecuteProgramAction.cs" />
     <Compile Include="Domain\Action\ShowMessageAction.cs" />
@@ -131,9 +133,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Business\Statistics\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rd "$(ProjectDir)obj" /S /Q</PostBuildEvent>

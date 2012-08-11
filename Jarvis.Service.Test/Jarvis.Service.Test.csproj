@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Business\Location\LocationProviderTest.cs" />
     <Compile Include="Business\Location\WlanSensorDatasProviderTest.cs" />
+    <Compile Include="Business\Statistics\StatsCollectorTest.cs" />
     <Compile Include="Domain\Location\LocationCategoryTest.cs" />
     <Compile Include="Domain\Location\LocationSensorDatasTest.cs" />
     <Compile Include="Domain\Location\MacAddressTest.cs" />
