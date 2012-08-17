@@ -5,6 +5,7 @@ using System.Text;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Jarvis.Service.Domain.Mappings;
+using Jarvis.Service.Domain.Repos;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
@@ -21,6 +22,8 @@ namespace Jarvis.Service.IoC
         {
             Bind<ISessionFactory>().ToMethod(CreateSessionFactory).InSingletonScope();
             Bind<ISession>().ToMethod((x) => x.Kernel.Get<ISessionFactory>().OpenSession());
+            Bind<ILocationRepository>().To<LocationNhRepository>();
+            Bind<ILocationStatsRepository>().To<LocationStatsNhRepository>();
         }
 
         #endregion

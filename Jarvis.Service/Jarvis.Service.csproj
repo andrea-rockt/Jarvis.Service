@@ -108,6 +108,7 @@
     <Compile Include="Domain\Statistics\LocationStats.cs" />
     <Compile Include="Domain\Statistics\LocationStatsEntry.cs" />
     <Compile Include="Extensions\TimesExtension.cs" />
+    <Compile Include="IoC\JarvisModule.cs" />
     <Compile Include="IoC\NHibernateModule.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

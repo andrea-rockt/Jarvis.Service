@@ -22,8 +22,6 @@ namespace Jarvis.Service.IoC
             Bind<IManagedWifiContext>().To<ManagedWifiContext>();
             Bind<ILocationProvider>().To<LocationProvider>();
             Bind<ISensorDatasProvider>().To<WlanSensorDatasProvider>();
-            Bind<ILocationRepository>().To<LocationNhRepository>();
-            Bind<ILocationStatsRepository>().To<LocationStatsNhRepository>();
             Bind<IStatsCollector>().To<StatsCollector>();
         }
 
