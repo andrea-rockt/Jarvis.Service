@@ -34,5 +34,29 @@ namespace Jarvis.Service.Properties {
                 this["DbPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:9090/Jarvis")]
+        public string ServiceUri {
+            get {
+                return ((string)(this["ServiceUri"]));
+            }
+            set {
+                this["ServiceUri"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:10")]
+        public global::System.TimeSpan CollectionPeriod {
+            get {
+                return ((global::System.TimeSpan)(this["CollectionPeriod"]));
+            }
+            set {
+                this["CollectionPeriod"] = value;
+            }
+        }
     }
 }

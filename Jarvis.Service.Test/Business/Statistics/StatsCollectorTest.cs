@@ -17,7 +17,6 @@ namespace Jarvis.Service.Test.Business.Statistics
     public class StatsCollectorTest
     {
         private StatsCollector _sut;
-        private LocationProvider _locationProvider;
         const int DistinctLocations = 20;
         private List<LocationStats> _fakeRepoList = new List<LocationStats>();
         private Queue<Loc.Location> _locations = new Queue<Service.Domain.Location.Location>();

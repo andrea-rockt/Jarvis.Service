@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
+using Jarvis.Service.IoC;
+using Ninject;
+using Ninject.Modules;
 
 namespace Jarvis.Service
 {
@@ -13,16 +16,28 @@ namespace Jarvis.Service
         /// </summary>
         static void Main()
         {
-#if ! DEBUG
+
+            var modules = new INinjectModule[]
+                                           {
+                                               new JarvisModule(), 
+                                               new NHibernateModule(), 
+                                               new WcfModule(),
+                                           };
+
+            IKernel kernel = new StandardKernel(modules);
+
+            ServiceBase jarvisService = kernel.Get<JarvisServiceHost>();
+
+
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
 			{ 
-				new Service1() 
+				jarvisService
 			};
             ServiceBase.Run(ServicesToRun);
-#else
-            (new JarvisService()).DebugOnStart(new string[]{});
-#endif
+
+//            ((JarvisServiceHost)jarvisService).DebugOnStart(new string[]{});
+
 
         }
     }

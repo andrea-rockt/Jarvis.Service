@@ -9,9 +9,9 @@ using System.Text;
 
 namespace Jarvis.Service
 {
-    public partial class JarvisService : ServiceBase
+    public partial class JarvisServiceHost : ServiceBase
     {
-        public JarvisService()
+        public JarvisServiceHost()
         {
             InitializeComponent();
         }

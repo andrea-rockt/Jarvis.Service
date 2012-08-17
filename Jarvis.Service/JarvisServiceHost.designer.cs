@@ -1,6 +1,6 @@
 ﻿namespace Jarvis.Service
 {
-    partial class JarvisService
+    partial class JarvisServiceHost
     {
         /// <summary> 
         /// Variabile di progettazione necessaria.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             // 
-            // JarvisService
+            // JarvisServiceHost
             // 
             this.ServiceName = "JarvisService";
 

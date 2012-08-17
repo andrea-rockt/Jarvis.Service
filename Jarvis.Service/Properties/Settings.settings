@@ -5,5 +5,11 @@
     <Setting Name="DbPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">jarvis.sqlite3</Value>
     </Setting>
+    <Setting Name="ServiceUri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost:9090/Jarvis</Value>
+    </Setting>
+    <Setting Name="CollectionPeriod" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:10</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

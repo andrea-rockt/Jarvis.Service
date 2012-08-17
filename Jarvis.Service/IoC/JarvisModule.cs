@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Jarvis.Service.Business.Location;
 using Jarvis.Service.Business.Statistics;
-using Jarvis.Service.Domain.Repos;
 using ManagedWifi;
 using Ninject.Modules;
 
@@ -19,10 +18,13 @@ namespace Jarvis.Service.IoC
         /// </summary>
         public override void Load()
         {
-            Bind<IManagedWifiContext>().To<ManagedWifiContext>();
+            Bind<IManagedWifiContext>().To<ManagedWifiContext>().WithConstructorArgument("requiredClientVersion",
+                                                                                         ManagedWifiContext.NWlanVersion
+                                                                                             .WindowsXP);
             Bind<ILocationProvider>().To<LocationProvider>();
             Bind<ISensorDatasProvider>().To<WlanSensorDatasProvider>();
-            Bind<IStatsCollector>().To<StatsCollector>();
+            Bind<IStatsCollector>().To<StatsCollector>().WithConstructorArgument("collectionPeriod",Properties.Settings.Default.CollectionPeriod);
+            Bind<JarvisServiceHost>().ToSelf();
         }
 
         #endregion
