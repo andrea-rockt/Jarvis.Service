@@ -47,6 +47,9 @@
     <Reference Include="Jarvis.WCF">
       <HintPath>..\..\Jarvis.WCF\build\Jarvis.WCF\bin\Debug\Jarvis.WCF.dll</HintPath>
     </Reference>
+    <Reference Include="Jarvis.WCF.Contracts">
+      <HintPath>..\..\Jarvis.WCF\build\Jarvis.WCF.Contracts\bin\Debug\Jarvis.WCF.Contracts.dll</HintPath>
+    </Reference>
     <Reference Include="ManagedWifi, Version=1.0.4586.32685, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ManagedWifi\bin\Debug\ManagedWifi.dll</HintPath>
@@ -141,6 +144,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="WCFService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
