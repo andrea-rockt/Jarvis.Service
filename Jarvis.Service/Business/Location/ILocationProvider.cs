@@ -16,7 +16,9 @@ namespace Jarvis.Service.Business.Location
         /// Location object referring to the best fitting location present in the db.
         /// </summary>
         Domain.Location.Location ComputedLocation { get; }
-        
+
+
+        IList<Domain.Location.Location> KnownLocations { get; }
         /// <summary>
         /// Stores the location object in the db of known locations
         /// </summary>

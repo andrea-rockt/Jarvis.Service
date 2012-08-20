@@ -15,7 +15,7 @@ namespace Jarvis.Service.IoC
         /// </summary>
         public override void Load()
         {
-            //Bind<IJarvisWcfService>().To<JarvisWcfService>().InSingletonScope();
+            Bind<JarvisWcfService>().ToSelf().InSingletonScope();
         }
 
         #endregion

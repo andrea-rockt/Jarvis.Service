@@ -14,8 +14,13 @@ namespace Jarvis.Service
     public partial class JarvisServiceHost : ServiceBase
     {
         private ServiceHost _serviceHost;
-        public JarvisServiceHost()
+
+        private readonly JarvisWcfService _singletonService;
+
+
+        public JarvisServiceHost(JarvisWcfService singletonService)
         {
+            this._singletonService = singletonService;
             InitializeComponent();
         }
 
@@ -23,7 +28,7 @@ namespace Jarvis.Service
         {
             var baseAddress = new Uri(Properties.Settings.Default.ServiceUri);
 
-            _serviceHost = new ServiceHost(typeof(WCFService), baseAddress);
+            _serviceHost = new ServiceHost(_singletonService, baseAddress);
 
             var smb = new ServiceMetadataBehavior();
             smb.HttpGetEnabled = true;

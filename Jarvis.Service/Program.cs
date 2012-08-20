@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.ServiceProcess;
 using System.Text;
 using Jarvis.Service.IoC;
@@ -17,11 +19,14 @@ namespace Jarvis.Service
         static void Main()
         {
 
+            Environment.CurrentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
             var modules = new INinjectModule[]
                                            {
                                                new JarvisModule(), 
                                                new NHibernateModule(), 
                                                new WcfModule(),
+                                               new AutoMapperModule(), 
                                            };
 
             IKernel kernel = new StandardKernel(modules);

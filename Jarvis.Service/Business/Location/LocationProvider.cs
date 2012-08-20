@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Jarvis.Service.Domain.Repos;
 using System.Linq;
 namespace Jarvis.Service.Business.Location
@@ -42,12 +43,20 @@ namespace Jarvis.Service.Business.Location
                 var currentLocation = CurrentLocation;
 
                 var locations = from location in _locations.All()
-                                orderby location.LocationSensorDatas.DistanceFrom(currentLocation.LocationSensorDatas) ascending 
                                 select location;
 
-                return locations.FirstOrDefault();
+                //Forces Loading from db by constructing list in order to use order by clause
+                var locationsList=locations.ToList().OrderBy(
+                    location => location.LocationSensorDatas.DistanceFrom(currentLocation.LocationSensorDatas));
+
+                return locationsList.FirstOrDefault();
 
             }
+        }
+
+        public IList<Domain.Location.Location> KnownLocations
+        {
+            get { return _locations.All().ToList(); }
         }
 
         /// <summary>
@@ -56,6 +65,9 @@ namespace Jarvis.Service.Business.Location
         /// <param name="location">location object to store, required fields should be populated</param>
         public void StoreAsKnownLocation(Domain.Location.Location location)
         {
+            //Forces proxy loading
+            location.GetType();
+            location.LocationSensorDatas = CurrentLocation.LocationSensorDatas;
             _locations.Add(location);
         }
 

@@ -14,8 +14,10 @@ namespace Jarvis.Service.Domain.Location
             double distance = 0;
             foreach (var s1 in SensorDatas)
             {
+                s1.GetType();
                 foreach (var s2 in other.SensorDatas)
                 {
+                    s2.GetType();
                     distance += 1-s1.SquaredDistanceFrom(s2);
                 }
             }

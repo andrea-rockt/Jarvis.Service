@@ -50,6 +50,16 @@ namespace Jarvis.Service
                        };
         }
 
+        public Location GetCurrentLocation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StoreCurrentLocation(Location location)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

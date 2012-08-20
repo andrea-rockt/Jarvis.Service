@@ -69,7 +69,7 @@ namespace Jarvis.Service.Test.Business.Location
             IList<Service.Domain.Location.Location> locations = new List<Service.Domain.Location.Location>();
             for (int i = 0; i < DistinctLocations; i++)
             {
-                var current = _sut.CurrentLocation;
+                var current = new Service.Domain.Location.Location();
                 locations.Add(current);
                 _sut.StoreAsKnownLocation(current);
             }

@@ -38,14 +38,14 @@
     <StartupObject>Jarvis.Service.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="Jarvis.WCF">
-      <HintPath>..\..\Jarvis.WCF\build\Jarvis.WCF\bin\Debug\Jarvis.WCF.dll</HintPath>
     </Reference>
     <Reference Include="Jarvis.WCF.Contracts">
       <HintPath>..\..\Jarvis.WCF\build\Jarvis.WCF.Contracts\bin\Debug\Jarvis.WCF.Contracts.dll</HintPath>
@@ -121,6 +121,7 @@
     <Compile Include="Domain\Statistics\LocationStats.cs" />
     <Compile Include="Domain\Statistics\LocationStatsEntry.cs" />
     <Compile Include="Extensions\TimesExtension.cs" />
+    <Compile Include="IoC\AutoMapperModule.cs" />
     <Compile Include="IoC\JarvisModule.cs" />
     <Compile Include="IoC\NHibernateModule.cs" />
     <Compile Include="IoC\WcfModule.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="JarvisServiceHost.designer.cs">
       <DependentUpon>JarvisServiceHost.cs</DependentUpon>
     </Compile>
+    <Compile Include="JarvisWcfService.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>

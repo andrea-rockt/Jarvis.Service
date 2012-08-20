@@ -18,6 +18,7 @@ namespace Jarvis.Service.Domain.Location
 
         public override double SquaredDistanceFrom(SensorData other)
         {
+            other.GetType();
             var otherSensor = other as WlanSensorData;
 
             if (!BusinessEquals(otherSensor, false))
@@ -35,7 +36,7 @@ namespace Jarvis.Service.Domain.Location
             if (ReferenceEquals(this, other)) return true;
 
             return SSID.Equals(other.SSID) &&
-                   BSSIDs.SequenceEqual(other.BSSIDs) &&
+                   BSSIDs.All((x)=> other.BSSIDs.Any(y=> x.BusinessEquals(y))) &&
                    (!compareSignalStrength || SignalStrength.Equals(other.SignalStrength));
         }
 
