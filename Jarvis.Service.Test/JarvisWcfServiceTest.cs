@@ -50,7 +50,7 @@ namespace Jarvis.Service.Test
 
             foreach (var knownLocation in _sut.GetKnownLocations())
             {
-                Console.WriteLine(knownLocation.Name);
+                Console.WriteLine("{0} - {1}",knownLocation.Name,knownLocation.Score);
             }
 
             Console.WriteLine("Winner");
