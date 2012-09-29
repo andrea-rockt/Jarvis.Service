@@ -45,7 +45,6 @@ namespace Jarvis.Service.IoC
 
         private static void BuildSchema(Configuration config)
         {
-            File.Delete(Properties.Settings.Default.DbPath);
             new SchemaUpdate(config).Execute(false, true);
         }
     }

@@ -71,6 +71,19 @@ namespace Jarvis.Service.Business.Location
             _locations.Add(location);
         }
 
+        public void RemoveLocation(Domain.Location.Location location)
+        {
+            
+            _locations.Delete(_locations.FindBy(location.Id));
+        }
+
+        public void UpdateLocation(Domain.Location.Location location)
+        {
+
+            location.LocationSensorDatas = _locations.FindBy(location.Id).LocationSensorDatas;
+            _locations.Merge(location);
+        }
+
         #endregion
 
 

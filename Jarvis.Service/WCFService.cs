@@ -60,6 +60,16 @@ namespace Jarvis.Service
             throw new NotImplementedException();
         }
 
+        public void RemoveLocation(Location location)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateLocation(Location location)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

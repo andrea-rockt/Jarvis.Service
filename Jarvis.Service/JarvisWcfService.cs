@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using AutoMapper;
 using Jarvis.Service.Business.Location;
+using Jarvis.WCF.Contracts.Data;
 using DTO = Jarvis.WCF.Contracts.Data;
 using Domain = Jarvis.Service.Domain;
 using DataContracts = Jarvis.WCF.Contracts.Data;
@@ -49,6 +50,20 @@ namespace Jarvis.Service
             var l = _mapper.Map<Domain.Location.Location>(location);
 
             _locationProvider.StoreAsKnownLocation(l);
+        }
+
+        public void RemoveLocation(Location location)
+        {
+            var l = _mapper.Map<Domain.Location.Location>(location);
+
+            _locationProvider.RemoveLocation(l);
+        }
+
+        public void UpdateLocation(Location location)
+        {
+            var l = _mapper.Map<Domain.Location.Location>(location);
+
+            _locationProvider.UpdateLocation(l);
         }
 
         #endregion

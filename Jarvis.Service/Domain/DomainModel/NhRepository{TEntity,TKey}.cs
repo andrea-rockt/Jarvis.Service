@@ -32,12 +32,21 @@ namespace Jarvis.Service.Domain.DomainModel
         public bool Update(TEntity entity)
         {
             _session.Update(entity);
+            _session.Flush();
+            return true;
+        }
+
+        public bool AddOrUpdate(TEntity entity)
+        {
+            _session.SaveOrUpdate(entity);
+            _session.Flush();
             return true;
         }
 
         public bool Delete(TEntity entity)
         {
             _session.Delete(entity);
+            _session.Flush();
             return true;
         }
 
@@ -47,6 +56,13 @@ namespace Jarvis.Service.Domain.DomainModel
             {
                 _session.Delete(entity);
             }
+            return true;
+        }
+
+        public bool Merge(TEntity entity)
+        {
+            _session.Merge(entity);
+            _session.Flush();
             return true;
         }
 
@@ -69,6 +85,8 @@ namespace Jarvis.Service.Domain.DomainModel
         {
             return _session.Get<TEntity>(id);
         }
+
+
 
     }
 }

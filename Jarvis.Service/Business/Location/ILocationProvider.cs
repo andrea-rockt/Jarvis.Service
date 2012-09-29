@@ -24,5 +24,10 @@ namespace Jarvis.Service.Business.Location
         /// </summary>
         /// <param name="location">location object to store, required fields should be populated</param>
         void StoreAsKnownLocation(Domain.Location.Location location);
+
+
+        void RemoveLocation(Domain.Location.Location location);
+
+        void UpdateLocation(Domain.Location.Location location);
     }
 }

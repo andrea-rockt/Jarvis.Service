@@ -7,7 +7,9 @@ namespace Jarvis.Service.Domain.DomainModel
         bool Add(TEntity entity);
         bool Add(IEnumerable<TEntity> items);
         bool Update(TEntity entity);
+        bool AddOrUpdate(TEntity entity);
         bool Delete(TEntity entity);
         bool Delete(IEnumerable<TEntity> entities);
+        bool Merge(TEntity entity);
     }
 }
