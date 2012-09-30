@@ -8,6 +8,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.ServiceProcess;
 using System.Text;
+using Jarvis.WCF.Contracts.Service;
 
 namespace Jarvis.Service
 {
@@ -26,17 +27,30 @@ namespace Jarvis.Service
 
         protected override void OnStart(string[] args)
         {
-            var baseAddress = new Uri(Properties.Settings.Default.ServiceUri);
+            var baseAddresses = new Uri[]
+                                    {
+                                        new Uri(Properties.Settings.Default.ServiceHttpUri),
+                                        new Uri(Properties.Settings.Default.ServiceNamedPipeUri),
+                                    };
 
-            _serviceHost = new ServiceHost(_singletonService, baseAddress);
+            _serviceHost = new ServiceHost(_singletonService, baseAddresses);
 
+            _serviceHost.AddServiceEndpoint(typeof(ILocationService),
+            new BasicHttpBinding(),
+            "Location");
+
+            _serviceHost.AddServiceEndpoint(typeof(ILocationService),
+              new NetNamedPipeBinding(),
+              "Location");
+
+            
             var smb = new ServiceMetadataBehavior();
             smb.HttpGetEnabled = true;
             smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
             _serviceHost.Description.Behaviors.Add(smb);
 
             _serviceHost.Description.Behaviors.Find<ServiceDebugBehavior>().IncludeExceptionDetailInFaults = true;
-
+            
             _serviceHost.Open();
         }
 

@@ -38,12 +38,12 @@ namespace Jarvis.Service.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:9090/Jarvis")]
-        public string ServiceUri {
+        public string ServiceHttpUri {
             get {
-                return ((string)(this["ServiceUri"]));
+                return ((string)(this["ServiceHttpUri"]));
             }
             set {
-                this["ServiceUri"] = value;
+                this["ServiceHttpUri"] = value;
             }
         }
         
@@ -56,6 +56,18 @@ namespace Jarvis.Service.Properties {
             }
             set {
                 this["CollectionPeriod"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("net.pipe://localhost/Jarvis")]
+        public string ServiceNamedPipeUri {
+            get {
+                return ((string)(this["ServiceNamedPipeUri"]));
+            }
+            set {
+                this["ServiceNamedPipeUri"] = value;
             }
         }
     }
